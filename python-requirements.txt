@@ -1,0 +1,5 @@
+packaging
+requests[security]
+xmltodict
+msal
+azure-cli-core

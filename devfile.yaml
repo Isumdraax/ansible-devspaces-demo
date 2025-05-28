@@ -87,6 +87,21 @@ commands:
         ansible-navigator --ee false
       workingDir: ${PROJECTS_ROOT}/ansible-devspaces-demo
       component: tooling-container
+
+  - id: install-ansible-and-python-requirements
+    exec:
+      label: "0- Install ansible collections and python requirements (in files collections/requirement.yaml + python-requirements.txt)"
+      component: tooling-container
+      workingDir: ${PROJECTS_ROOT}/ansible-devspaces-demo
+      commandLine: |
+        ansible-galaxy install -r collections/requirements.yml
+        python3.11 -m pip install -r python-requirements.txt
+      group:
+        kind: run
+        isDefault: true
+
 events:
+  postStart:
+    - install-ansible-and-python-requirements
   preStop:
     - "molecule-destroy"
