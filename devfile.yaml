@@ -101,7 +101,7 @@ commands:
         isDefault: true
 
 events:
-  postStart:
-    - install-ansible-and-python-requirements
+  #postStart:
+    #- install-ansible-and-python-requirements
   preStop:
     - "molecule-destroy"
